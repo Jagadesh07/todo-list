@@ -1,18 +1,32 @@
-let todoList = [
-    {
-        task:'personal'
-    }
-];
+let todoList = [];
     let inputTask= document.querySelector('.js-todoInput');
-    let enterBtn = document.querySelector('.js-enterBtn');
-    enterBtn.addEventListener('click', () =>{
-        getInput();
+    let dateInput = document.querySelector('.js-dateInput');
+    let timeInput = document.querySelector('.js-timeInput');
+
+    document.querySelector('.js-enterBtn').addEventListener('click', () =>{
+        if(!inputTask.value){
+            alert('please specify a task');
+        }
+        else if(!dateInput.value){
+            alert('please specify a date');
+        }
+         else if(!timeInput.value){
+            alert('please specify a time');
+        }
+        else{
+             getInput();
+        }
+       
     })
    
 function getInput(){
     let task = inputTask.value;
-    todoList.push({task});
+    let date = dateInput.value;
+    let time = timeInput.value;
+    todoList.push({task,date,time});
     inputTask.value = '';
+    dateInput.value = '';
+    timeInput.value = '';
     renderTodo();
 }
 function renderTodo(){
@@ -21,8 +35,10 @@ function renderTodo(){
     todoList.forEach(function(value){
        let todoObject = value;
         const {task} = todoObject;
+        const {date} = todoObject;
+        const {time} = todoObject;
         const html  = `<div class="list-item">
-                <p class="js-task">${task}</p>
+                <p class="js-task"><span>${task}</span><span>${date}</span><span>${time}</span></p>
                 <button class="js-deleteBtn"><i class="fa-solid fa-trash"></i></button>
             </div>`
             pageHTML += html;
@@ -36,56 +52,3 @@ function renderTodo(){
         })
     })
 }
-
-// 
-// let list = [];
-
-//     let inputElement = document.querySelector('.js-input');
-//     let dateInput = document.querySelector(".js-date");
-//     let timeInput = document.querySelector('.js-time');
-// document.querySelector('.js-add-todo-button').addEventListener('click', () => {
-//     getInput();
-// });
-
-// timeInput.addEventListener('keydown',(event) => {
-//     if(event.key === 'Enter'){
-//         getInput();
-//     }
-// })
-// function renderTodo(){
-//     let pageHTML = '';
-    
-//     list.forEach(function(value){
-//         todoObject = value;
-//     const {name} = todoObject;
-//     const {dueDate} = todoObject;
-//     const {time} = todoObject;
-//     const html = `<div>${name} - ${dueDate} - ${time}
-//     <button class="js-delete-todo-button">
-//     delete
-//     </button></div>`;
-//     pageHTML += html;
-//     });
-// document.querySelector('.js-display').innerHTML = pageHTML;
-
-//     document.querySelectorAll('.js-delete-todo-button')
-//     .forEach((deleteButton,index) => {
-//        deleteButton.addEventListener('click', () => {
-//            list.splice(index,1);
-//          renderTodo();
-//        })
-//     });
-// }
-// function getInput(){
-//     let name = inputElement.value;
-//     let dueDate = dateInput.value;
-//     let time = timeInput.value;
-//     list.push({name
-//         ,dueDate,time});
-//     inputElement.value = '';
-//     dateInput.value = '';
-//     timeInput.value = '';
-//     renderTodo();
-// }
-
-// 
