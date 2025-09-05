@@ -1,0 +1,73 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+:root{
+    --main-shade:rgb(43, 43, 43);
+    --highlight-shade:rgb(245, 199, 108);
+    --text-color:white;
+    --icon-color:black;
+}
+
+body{
+    font-family: sans-serif;
+    background-color: black;
+    min-height: 100vh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* reusable styles */
+button{
+    background-color: var(--highlight-shade);
+}
+button i{
+    font-size: 15px;
+}
+/*  */
+.container{
+    min-height: 10rem;
+    width: 30%;
+    background-color: var(--main-shade);
+    padding: 2rem;
+    border-radius: 10px;
+    color: var(--text-color);
+}
+.entry-section{
+    width: 100%;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    gap: .5rem;
+}
+.entry-section input ,button{
+    padding: .5rem 1rem ;
+    border: none;
+    border-radius: 5px;
+}
+.entry-section input{
+    flex: 2 1 auto;
+}
+
+/*  */
+.list-section{
+    width: 100%;
+    padding-top: 1rem;
+}
+.list-item{
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    gap: .5rem;
+    
+}
+.list-item p{
+    padding: .5rem 1rem;
+    flex: 2 1 auto;
+}
+.list-item button{
+    transform: scaleX(1.03);
+}
