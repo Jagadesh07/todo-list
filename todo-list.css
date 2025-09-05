@@ -29,12 +29,16 @@ button i{
 }
 /*  */
 .container{
-    min-height: 10rem;
+    max-height: 50rem;
     width: 30%;
     background-color: var(--main-shade);
     padding: 2rem;
     border-radius: 10px;
     color: var(--text-color);
+    overflow: hidden;
+}
+.container h1{
+    margin: 1rem;
 }
 .entry-section{
     width: 100%;
@@ -54,18 +58,21 @@ button i{
 
 /*  */
 .list-section{
+    max-height: 45rem;
     width: 100%;
-    padding-top: 1rem;
+    padding-right: 2rem;
+    margin-top: 1rem;
+    overflow: scroll;
 }
 .list-item{
     display: flex;
     justify-content: start;
     align-items: center;
     gap: .5rem;
-    
+    margin-top: .5rem;
 }
 .list-item p{
-    padding: .5rem 1rem;
+    margin: .5rem 1rem;
     flex: 2 1 auto;
 }
 .list-item button{
