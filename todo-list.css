@@ -55,6 +55,7 @@ button i{
     display: flex;
     justify-content: start;
     align-items: center;
+    flex-wrap: wrap;
     gap: .5rem;
 }
 .entry-section input , .entry-section button,.list-item button{
@@ -80,39 +81,38 @@ button i{
     display: flex;
     justify-content: start;
     align-items: center;
+    flex-wrap: nowrap;
     gap: .5rem;
     margin-top: .5rem;
 }
 .list-item p{
-    margin: .5rem 1rem;
+    margin: 0 .5rem;
     flex: 2 1 auto;
     display: grid;
+    overflow-x: scroll;
     grid-template-columns: 10% repeat(3,1fr);
 }
 .js-checkBox{
+    padding: .5rem;
     cursor: pointer;
+    justify-self: start;
+    width: 20px;
     accent-color: var(--highlight-shade);
 }
 .list-item button{
     transform: scaleX(1.03);
 }
-.js-checkBox{
-    justify-self: start;
-    width: 50%;
-}
 
 /* mode-switch */
 
 .left-section{
-    height: 100%;
-    width: 5%;
     position: absolute;
     top: 3%;
     left: 3%;
 }
 .mode-switch{
     background-color: var(--main-shade);
-    width: 100%;
+    width: 80%;
     height: 2rem;
     padding: .8rem;
     border-radius: 100px;
@@ -132,4 +132,17 @@ button i{
 }
 .mode-switch button:nth-child(2){
     transform: scaleX(1.1);
+}
+
+@media(max-width:900px){
+    .container{
+        margin-top: 5rem;
+    }
+}
+@media (max-width:550px) {
+        .list-item p{
+        grid-template-columns: repeat(4,1fr);
+        column-gap: .5rem;
+        font-size: 10px;
+    }
 }
