@@ -2,7 +2,9 @@ let todoList = [];
     let inputTask= document.querySelector('.js-todoInput');
     let dateInput = document.querySelector('.js-dateInput');
     let timeInput = document.querySelector('.js-timeInput');
+    let checkInput = document.querySelectorAll('.js-checkBox');
 
+    
     document.querySelector('.js-enterBtn').addEventListener('click', () =>{
         if(!inputTask.value){
             alert('please specify a task');
@@ -38,12 +40,27 @@ function renderTodo(){
         const {date} = todoObject;
         const {time} = todoObject;
         const html  = `<div class="list-item">
-                <p class="js-task"><span>${task}</span><span>${date}</span><span>${time}</span></p>
+                <p class="js-task"><input type="checkbox" class="js-checkBox"><span>${task}</span><span>${date}</span><span>${time}</span></p>
                 <button class="js-deleteBtn"><i class="fa-solid fa-trash"></i></button>
             </div>`
             pageHTML += html;
-    })
- document.querySelector('.list-section').innerHTML = pageHTML;
+    });
+
+  document.querySelector('.list-section').innerHTML = pageHTML;
+
+    document.querySelectorAll('.js-checkBox').forEach((checkBox) => {
+        checkBox.addEventListener('change', () => {
+            const taskItem = checkBox.closest('.js-task');
+            if (checkBox.checked) {
+                taskItem.classList.add('completed');
+            } else {
+                taskItem.classList.remove('completed');
+            }
+        });
+    });
+
+    
+
 
  document.querySelectorAll('.js-deleteBtn').forEach((deleteBtn,index) => {
         deleteBtn.addEventListener('click', () => {

@@ -27,11 +27,15 @@ button{
 button i{
     font-size: 15px;
 }
+.completed span{
+    text-decoration: line-through;
+    color: red;
+}
 /*  */
 .container{
     max-height: 50rem;
     margin-top: 3rem;
-    width: 30%;
+    width: 50%;
     background-color: var(--main-shade);
     padding: 2rem;
     border-radius: 10px;
@@ -76,9 +80,13 @@ button i{
     margin: .5rem 1rem;
     flex: 2 1 auto;
     display: grid;
-    grid-template-columns: repeat(3,1fr);
+    grid-template-columns: 10% repeat(3,1fr);
 }
 
 .list-item button{
     transform: scaleX(1.03);
+}
+.js-checkBox{
+    justify-self: start;
+    width: 50%;
 }
