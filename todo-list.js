@@ -29,6 +29,7 @@ function getInput(){
     inputTask.value = '';
     dateInput.value = '';
     timeInput.value = '';
+    saveToLocalStorage();
     renderTodo();
 }
 
@@ -39,6 +40,7 @@ function checkBox(){
         checkBox.addEventListener('change', () => {
             const index = checkBox.getAttribute('data-index');
             todoList[index].completed = checkBox.checked;
+            saveToLocalStorage();
             const taskItem = checkBox.closest('.js-task');
             if (checkBox.checked) {
                 taskItem.classList.add('completed');
@@ -64,12 +66,14 @@ function renderTodo(){
                 <button class="js-deleteBtn" data-index="${index}"><i class="fa-solid fa-trash"></i></button>
             </div>`
             pageHTML += html;
+            saveToLocalStorage();
     });
      document.querySelector('.list-section').innerHTML = pageHTML;
 
  document.querySelectorAll('.js-deleteBtn').forEach((deleteBtn,index) => {
         deleteBtn.addEventListener('click', () => {
             todoList.splice(index,1);
+            saveToLocalStorage();
             renderTodo();
         })
     })
@@ -88,6 +92,8 @@ darkMode.addEventListener('click',() => {
     lightMode.style.backgroundColor = 'transparent';
     lightMode.style.color = 'white';
     setMode();
+
+    localStorage.setItem('theme','dark');
 })
 lightMode.addEventListener('click',() => {
     dark = false;
@@ -96,6 +102,8 @@ lightMode.addEventListener('click',() => {
     darkMode.style.backgroundColor = 'transparent';
     darkMode.style.color = 'black';
     setMode();
+
+    localStorage.setItem('theme','light');
 })
 
 
@@ -113,3 +121,40 @@ else{
     r.style.setProperty('--main-shade','white');
 }
 }
+
+//local-storage
+
+function saveToLocalStorage(){
+    localStorage.setItem('todoList',JSON.stringify(todoList));
+}
+
+function loadFromLocalStorage(){
+    const storedList = localStorage.getItem('todoList');
+    if(storedList){
+        todoList = JSON.parse(storedList);
+        renderTodo();
+    }
+}
+function loadTheme() {
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme) {
+        dark = savedTheme === 'dark';
+        setMode();
+
+        if (dark) {
+            darkMode.style.backgroundColor = 'rgb(245, 199, 108)';
+            darkMode.style.color = 'black';
+            lightMode.style.backgroundColor = 'transparent';
+            lightMode.style.color = 'white';
+        } else {
+            lightMode.style.backgroundColor = 'rgb(245, 199, 108)';
+            lightMode.style.color = 'black';
+            darkMode.style.backgroundColor = 'transparent';
+            darkMode.style.color = 'black';
+        }
+    }
+}
+window.addEventListener('DOMContentLoaded',() => {
+    loadFromLocalStorage();
+    loadTheme();
+});
