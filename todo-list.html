@@ -7,7 +7,14 @@
     <title>todo list</title>
 </head>
 <body>
-    <div class="container">
+    <section class="left-section">
+        <div class="mode-switch">
+            <button class="light"><i class="fa-solid fa-sun"></i></button>
+            <button class="dark"><i class="fa-solid fa-moon"></i></button>
+        </div>
+    </section>
+    <section class="wrapper">
+        <div class="container">
         <h1>Todo-list</h1>
         <div class="entry-section">
             <input type="text" placeholder="Enter todo-item" class="js-todoInput" required>
@@ -19,6 +26,8 @@
             
         </div>
     </div>
+    </section>
+    
     <!-- script -->
      <script src="todo-list.js"></script>
 

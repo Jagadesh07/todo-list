@@ -4,24 +4,22 @@
 }
 
 :root{
-    --main-shade:rgb(43, 43, 43);
+    --main-shade: white;
+    --secondary-shade:rgb(235, 242, 245);
     --highlight-shade:rgb(245, 199, 108);
-    --text-color:white;
-    --icon-color:black;
+    --text-color: black;
+    --icon-color:white;
 }
 
 body{
     font-family: sans-serif;
-    background-color: rgb(51, 48, 48);
+    background-color: var(--secondary-shade);
     min-height: 100vh;
     width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: start;
 }
 
 /* reusable styles */
-button{
+.list-item button, .entry-section button{
     background-color: var(--highlight-shade);
 }
 button i{
@@ -32,9 +30,16 @@ button i{
     color: red;
 }
 /*  */
+.wrapper{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: start;
+    padding-top: 3rem;
+}
 .container{
     max-height: 50rem;
-    margin-top: 3rem;
     width: 50%;
     background-color: var(--main-shade);
     padding: 2rem;
@@ -52,13 +57,15 @@ button i{
     align-items: center;
     gap: .5rem;
 }
-.entry-section input ,button{
+.entry-section input , .entry-section button,.list-item button{
     padding: .5rem 1rem ;
     border: none;
     border-radius: 5px;
 }
 .entry-section input{
     flex: 2 1 auto;
+    color: var(--text-color);
+    background-color: var(--secondary-shade);
 }
 
 /*  */
@@ -92,4 +99,37 @@ button i{
 .js-checkBox{
     justify-self: start;
     width: 50%;
+}
+
+/* mode-switch */
+
+.left-section{
+    height: 100%;
+    width: 5%;
+    position: absolute;
+    top: 3%;
+    left: 3%;
+}
+.mode-switch{
+    background-color: var(--main-shade);
+    width: 100%;
+    height: 2rem;
+    padding: .8rem;
+    border-radius: 100px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.mode-switch button{
+    padding: .8rem;
+    background-color: transparent;
+    border: none;
+    border-radius: 50%;
+    transition: all .5s ease;
+}
+.mode-switch button:first-child{
+    background-color: var(--highlight-shade);
+}
+.mode-switch button:nth-child(2){
+    transform: scaleX(1.1);
 }

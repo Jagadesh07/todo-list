@@ -75,3 +75,41 @@ function renderTodo(){
     })
     checkBox();
 }
+
+// mode-switching
+const darkMode = document.querySelector('.dark');
+const lightMode = document.querySelector('.light');
+let dark = false;
+
+darkMode.addEventListener('click',() => {
+    dark = true;
+    darkMode.style.backgroundColor = 'black';
+    darkMode.style.color = 'white';
+    lightMode.style.backgroundColor = 'transparent';
+    lightMode.style.color = 'white';
+    setMode();
+})
+lightMode.addEventListener('click',() => {
+    dark = false;
+    lightMode.style.backgroundColor = 'wheat';
+    lightMode.style.color = 'black';
+    darkMode.style.backgroundColor = 'transparent';
+    darkMode.style.color = 'black';
+    setMode();
+})
+
+
+let r = document.querySelector(':root');
+
+function setMode(){
+    if(dark){
+    r.style.setProperty('--secondary-shade','rgb(36, 36, 36)');
+    r.style.setProperty('--text-color','white');
+    r.style.setProperty('--main-shade','rgb(29, 27, 27)');
+}
+else{
+    r.style.setProperty('--secondary-shade','rgb(235, 242, 245)');
+    r.style.setProperty('--text-color','black');
+    r.style.setProperty('--main-shade','white');
+}
+}
