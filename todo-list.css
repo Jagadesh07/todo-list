@@ -82,7 +82,10 @@ button i{
     display: grid;
     grid-template-columns: 10% repeat(3,1fr);
 }
-
+.js-checkBox{
+    cursor: pointer;
+    accent-color: var(--highlight-shade);
+}
 .list-item button{
     transform: scaleX(1.03);
 }
