@@ -25,31 +25,20 @@ function getInput(){
     let task = inputTask.value;
     let date = dateInput.value;
     let time = timeInput.value;
-    todoList.push({task,date,time});
+    todoList.push({task,date,time,completed:false});
     inputTask.value = '';
     dateInput.value = '';
     timeInput.value = '';
     renderTodo();
 }
-function renderTodo(){
-    let pageHTML = '';
 
-    todoList.forEach(function(value){
-       let todoObject = value;
-        const {task} = todoObject;
-        const {date} = todoObject;
-        const {time} = todoObject;
-        const html  = `<div class="list-item">
-                <p class="js-task"><input type="checkbox" class="js-checkBox"><span>${task}</span><span>${date}</span><span>${time}</span></p>
-                <button class="js-deleteBtn"><i class="fa-solid fa-trash"></i></button>
-            </div>`
-            pageHTML += html;
-    });
-
-  document.querySelector('.list-section').innerHTML = pageHTML;
+function checkBox(){
+   
 
     document.querySelectorAll('.js-checkBox').forEach((checkBox) => {
         checkBox.addEventListener('change', () => {
+            const index = checkBox.getAttribute('data-index');
+            todoList[index].completed = checkBox.checked;
             const taskItem = checkBox.closest('.js-task');
             if (checkBox.checked) {
                 taskItem.classList.add('completed');
@@ -59,8 +48,24 @@ function renderTodo(){
         });
     });
 
-    
 
+}
+
+
+function renderTodo(){
+    let pageHTML = '';
+
+    todoList.forEach((value,index) => {
+        const { task, date, time, completed } = value;
+        const checked = completed ? 'checked' : '';
+        const completedClass = completed ? 'completed' : '';
+        const html  = `<div class="list-item">
+                <p class="js-task ${completedClass}"><input type="checkbox" class="js-checkBox" data-index = "${index}" ${checked}><span>${task}</span><span>${date}</span><span>${time}</span></p>
+                <button class="js-deleteBtn" data-index="${index}"><i class="fa-solid fa-trash"></i></button>
+            </div>`
+            pageHTML += html;
+    });
+     document.querySelector('.list-section').innerHTML = pageHTML;
 
  document.querySelectorAll('.js-deleteBtn').forEach((deleteBtn,index) => {
         deleteBtn.addEventListener('click', () => {
@@ -68,4 +73,5 @@ function renderTodo(){
             renderTodo();
         })
     })
+    checkBox();
 }
