@@ -83,15 +83,15 @@ let dark = false;
 
 darkMode.addEventListener('click',() => {
     dark = true;
-    darkMode.style.backgroundColor = 'black';
-    darkMode.style.color = 'white';
+    darkMode.style.backgroundColor = 'rgb(245, 199, 108)';
+    darkMode.style.color = 'black';
     lightMode.style.backgroundColor = 'transparent';
     lightMode.style.color = 'white';
     setMode();
 })
 lightMode.addEventListener('click',() => {
     dark = false;
-    lightMode.style.backgroundColor = 'wheat';
+    lightMode.style.backgroundColor = 'rgb(245, 199, 108)';
     lightMode.style.color = 'black';
     darkMode.style.backgroundColor = 'transparent';
     darkMode.style.color = 'black';
